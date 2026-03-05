@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dhoom Nacho — Dance Your Way to Screen-Free Balance</title>
+    <meta name="description" content="Dhoom Nacho is a digital wellbeing app that replaces mindless scrolling with energising dance breaks. Earn your social media time by moving your body." />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #E94560;
+            --secondary: #F5A623;
+            --bg: #0F0E17;
+            --surface: #1A1A2E;
+            --text: #FFFFFE;
+            --muted: #A7A9BE;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: var(--surface);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--secondary); }
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--text); }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 80px;
+            background: linear-gradient(160deg, #1A1A2E 0%, #16213E 100%);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(233,69,96,0.15);
+            color: var(--primary);
+            border: 1px solid rgba(233,69,96,0.4);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.15;
+            max-width: 760px;
+            margin: 0 auto 20px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--primary);
+        }
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--muted);
+            max-width: 560px;
+            margin: 0 auto 40px;
+        }
+        .cta-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(233,69,96,0.5); }
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.2);
+            color: var(--text);
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .btn-outline:hover { border-color: var(--primary); background: rgba(233,69,96,0.08); }
+
+        /* SECTION SHARED */
+        section { padding: 80px 20px; }
+        .container { max-width: 1040px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+        .section-desc {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 580px;
+            margin-bottom: 48px;
+        }
+
+        /* PROBLEM / SOLUTION */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+        @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .card-icon { font-size: 2.4rem; margin-bottom: 16px; }
+        .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+        .card p { color: var(--muted); font-size: 0.95rem; }
+
+        /* HOW IT WORKS */
+        .steps { display: flex; flex-direction: column; gap: 0; }
+        .step {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .step:last-child { padding-bottom: 0; }
+        .step-num {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .step-connector {
+            position: absolute;
+            left: 23px;
+            top: 48px;
+            bottom: 0;
+            width: 2px;
+            background: rgba(233,69,96,0.25);
+        }
+        .step:last-child .step-connector { display: none; }
+        .step-body h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+        .step-body p { color: var(--muted); font-size: 0.95rem; }
+
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--surface);
+            border-radius: 14px;
+            padding: 26px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .feature-card:hover { border-color: rgba(233,69,96,0.4); transform: translateY(-3px); }
+        .feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
+        .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.55; }
+
+        /* COMPARISON TABLE */
+        .table-wrap { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+        thead { background: rgba(233,69,96,0.12); }
+        thead th { padding: 16px 20px; text-align: left; font-weight: 700; color: var(--primary); }
+        tbody tr { border-top: 1px solid rgba(255,255,255,0.06); transition: background 0.15s; }
+        tbody tr:hover { background: rgba(255,255,255,0.03); }
+        tbody td { padding: 14px 20px; color: var(--muted); }
+        tbody td:first-child { color: var(--text); font-weight: 600; }
+        .check { color: #4ecca3; font-weight: 700; }
+        .cross { color: var(--primary); }
+
+        /* PRIVACY */
+        .privacy-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .privacy-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 22px;
+            border: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        .privacy-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .privacy-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+        .privacy-card p { color: var(--muted); font-size: 0.85rem; }
+
+        /* FOOTER */
+        footer {
+            background: var(--surface);
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        /* HIGHLIGHT band */
+        .highlight-band {
+            background: linear-gradient(135deg, var(--primary) 0%, #c0392b 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .highlight-band h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 14px; }
+        .highlight-band p { opacity: 0.85; max-width: 520px; margin: 0 auto 32px; font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">Dhoom<span>Nacho</span></div>
+    <a href="mailto:contact@dhoomnacho.app">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">🕺 Digital Wellbeing App</div>
+    <h1>Earn Your Scroll Time.<br/><em>Dance First.</em></h1>
+    <p class="subtitle">
+        Dhoom Nacho replaces the guilt of mindless scrolling with the energy of a 2-minute dance break.
+        Your social media time is a reward — not a default.
+    </p>
+    <div class="cta-group">
+        <a href="#how-it-works" class="btn-primary">See How It Works</a>
+        <a href="#features" class="btn-outline">View Features</a>
+    </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <div class="section-label">The Problem</div>
+        <h2 class="section-title">Screen time limits don't work.</h2>
+        <p class="section-desc">
+            Standard "digital wellbeing" tools are punitive. They lock you out and make you feel guilty.
+            Users bypass them in seconds, and the habit loop goes unchanged.
+        </p>
+        <div class="two-col">
+            <div class="card">
+                <div class="card-icon">😵</div>
+                <h3>The Old Way — Punishment</h3>
+                <p>You hit your limit. The app goes grey. You feel frustrated, override the block, and scroll anyway. Nothing changes in your brain's reward circuit.</p>
+            </div>
+            <div class="card" style="border-color: rgba(233,69,96,0.25);">
+                <div class="card-icon">🎉</div>
+                <h3>The Dhoom Nacho Way — Reward</h3>
+                <p>You launch Instagram. Dhoom Nacho intercepts with a 2-minute dance video. You move, you earn, you unlock — and you feel <em>good</em> about it. The habit rewires itself.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" style="background: var(--surface);">
+    <div class="container">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">The Digital Bounty System</h2>
+        <p class="section-desc">
+            A simple 4-step loop that replaces passive dopamine scrolling with active physical movement.
+        </p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-connector"></div>
+                <div class="step-body">
+                    <h3>You launch a social media app</h3>
+                    <p>Instagram, YouTube, TikTok — any app you've added to your personal "friction list" during setup.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-connector"></div>
+                <div class="step-body">
+                    <h3>Dhoom Nacho intercepts</h3>
+                    <p>Using Android Accessibility Services, the app detects the launch and overlays the Dance Break screen on top instantly.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-connector"></div>
+                <div class="step-body">
+                    <h3>You complete your dance break</h3>
+                    <p>A curated YouTube Shorts dance video plays for your chosen duration (1 – 5 min). You can't skip it — the player is locked.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div class="step-connector"></div>
+                <div class="step-body">
+                    <h3>You earn your access</h3>
+                    <p>Timer completes → access is granted for your daily allowance. Every session logs a completed "bounty" so you can track your movement over time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TWO MODES -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <div class="section-label">Two Modes</div>
+        <h2 class="section-title">Match Your Discipline Level</h2>
+        <p class="section-desc">Choose once during setup. Switch anytime from Settings.</p>
+        <div class="two-col">
+            <div class="card" style="border-color: rgba(245,166,35,0.3);">
+                <div class="card-icon">👬</div>
+                <h3>Buddy Mode — Soft Nudge</h3>
+                <p>A 15-second friction countdown appears before your social media loads. You can choose to dismiss it or complete the dance. Ideal for conscious users building mindful habits gradually.</p>
+            </div>
+            <div class="card" style="border-color: rgba(233,69,96,0.3);">
+                <div class="card-icon">🧑‍💼</div>
+                <h3>Coach Mode — Hard Lock</h3>
+                <p>There is no dismissal. The dance break must be completed before the locked app opens. A system-level overlay prevents any bypass. For users who are serious about breaking the habit.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background: var(--surface);">
+    <div class="container">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Built for real habit change</h2>
+        <p class="section-desc">Every feature is designed around the core goal: make movement the natural path of least resistance.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>Curated Dance Videos</h3>
+                <p>YouTube Shorts — vertically optimised, auto-playing. A different dance video every session. Bollywood, K-pop, Hip-Hop and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Skip-Proof Player</h3>
+                <p>JS-level touch interception prevents vertical swipe navigation. The video runs; there is no escape until the timer completes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Dynamic App Selection</h3>
+                <p>The app reads your actual installed apps via Android accessibility APIs. Only add apps you genuinely want to friction-ise — no pre-set lists.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Daily Usage Allowance</h3>
+                <p>Set how many minutes per day of social media time you budget. The intervention triggers only after the allowance is exhausted.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚨</div>
+                <h3>Emergency Bypass</h3>
+                <p>Tap a hidden corner 10 times for a 2-minute emergency unlock. Every bypass is logged locally so you can hold yourself accountable.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📶</div>
+                <h3>Offline Resilience</h3>
+                <p>No internet? The Manual Dance mode activates — a pulsing timer with motivational prompts. The habit loop holds even without connectivity.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🕛</div>
+                <h3>Midnight Reset</h3>
+                <p>Usage allowance resets automatically at midnight local time. Each day is a fresh start with no manual intervention required.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Lightweight Analytics</h3>
+                <p>Tracks bounties completed, interventions triggered, and session durations — to show you your progress over time without surveillance.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON -->
+<section style="background: var(--bg);">
+    <div class="container">
+        <div class="section-label">Comparison</div>
+        <h2 class="section-title">How we compare</h2>
+        <p class="section-desc">Most screen time tools stop at restriction. Dhoom Nacho goes further — it replaces the behaviour.</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Standard Limits</th>
+                        <th>Dhoom Nacho</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Approach</td>
+                        <td>Punitive / Block</td>
+                        <td class="check">✓ Reward / Earn</td>
+                    </tr>
+                    <tr>
+                        <td>Habit Rewiring</td>
+                        <td class="cross">✗ None</td>
+                        <td class="check">✓ Movement replaces scrolling urge</td>
+                    </tr>
+                    <tr>
+                        <td>Bypass Resistance</td>
+                        <td class="cross">✗ Easy to override</td>
+                        <td class="check">✓ System-level enforcement</td>
+                    </tr>
+                    <tr>
+                        <td>Physical Health Benefit</td>
+                        <td class="cross">✗ None</td>
+                        <td class="check">✓ Movement every session</td>
+                    </tr>
+                    <tr>
+                        <td>Personalised App List</td>
+                        <td class="cross">✗ One-size-fits-all</td>
+                        <td class="check">✓ Your installed apps, your choice</td>
+                    </tr>
+                    <tr>
+                        <td>Privacy First</td>
+                        <td class="cross">✗ Varies</td>
+                        <td class="check">✓ Hashed identifiers, no private content read</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- PRIVACY -->
+<section style="background: var(--surface);">
+    <div class="container">
+        <div class="section-label">Privacy</div>
+        <h2 class="section-title">Your phone, your data</h2>
+        <p class="section-desc">We never read your messages, contacts, or content. Our accessibility permission is used only to detect which app is in the foreground.</p>
+        <div class="privacy-cards">
+            <div class="privacy-card">
+                <div class="icon">🔑</div>
+                <h4>Hashed Identifiers</h4>
+                <p>All device IDs are salted and SHA-256 hashed locally before any analytics event is sent.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="icon">📵</div>
+                <h4>No Content Scanning</h4>
+                <p>Accessibility permission detects app package names only. Messages, photos, and contacts are never accessed.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="icon">💾</div>
+                <h4>Local-First Storage</h4>
+                <p>Usage data and bypass logs are stored on-device using Android SharedPreferences. Nothing is uploaded or sold.</p>
+            </div>
+            <div class="privacy-card">
+                <div class="icon">🚫</div>
+                <h4>No Ads Targeting</h4>
+                <p>Any ads displayed are non-personalised by default. No behavioural profiling is built from your usage.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="highlight-band">
+    <div class="container">
+        <h2>Ready to earn your scroll time?</h2>
+        <p>Dhoom Nacho is coming soon to the Google Play Store. Join the early access list and be the first to rewire your habit loop.</p>
+        <a href="mailto:contact@dhoomnacho.app" class="btn-outline" style="display:inline-block; border-color: rgba(255,255,255,0.5); color: #fff;">
+            Get Early Access →
+        </a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p style="margin-bottom: 8px;">
+        <strong style="color: var(--text);">Dhoom Nacho</strong> &nbsp;·&nbsp; Package: <code>com.dhoomnacho.app</code>
+    </p>
+    <p>
+        &copy; 2026 Dhoom Nacho &nbsp;·&nbsp; 
+        <a href="mailto:contact@dhoomnacho.app">contact@dhoomnacho.app</a> &nbsp;·&nbsp;
+        <a href="privacy.html">Privacy Policy</a>
+    </p>
+</footer>
+
+</body>
+</html>
