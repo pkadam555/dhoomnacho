@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dhoom Nacho — Dance Your Way to Screen-Free Balance</title>
     <meta name="description" content="Dhoom Nacho is a digital wellbeing app that replaces mindless scrolling with energising dance breaks. Earn your social media time by moving your body." />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="DhoomNacho — Dance to Unlock Your Phone" />
+    <meta property="og:description" content="Stop doom-scrolling. Earn your screen time with a 2-min dance break. Free on Android." />
+    <meta property="og:image" content="https://dhoomnacho.app/images/og-banner.png" />
+    <meta property="og:url" content="https://dhoomnacho.app/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DhoomNacho — Dance to Unlock Your Phone" />
+    <meta name="twitter:description" content="Stop doom-scrolling. Earn your screen time with a 2-min dance break. Free on Android." />
+    <meta name="twitter:image" content="https://dhoomnacho.app/images/og-banner.png" />
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -255,6 +273,33 @@
         }
         .highlight-band h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 14px; }
         .highlight-band p { opacity: 0.85; max-width: 520px; margin: 0 auto 32px; font-size: 1rem; }
+
+        /* PLAY STORE BADGE */
+        .btn-play { display: inline-block; transition: transform 0.15s, opacity 0.15s; }
+        .btn-play:hover { transform: translateY(-2px); opacity: 0.9; }
+        .btn-play img { display: block; height: 60px; width: auto; }
+
+        /* SCREENSHOTS */
+        .screenshots-row {
+            display: flex;
+            gap: 28px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .screenshot-slot { text-align: center; }
+        .screenshot-slot img {
+            width: 200px;
+            height: 355px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+            display: block;
+            margin: 0 auto 12px;
+            object-fit: cover;
+            background: var(--surface);
+        }
+        .screenshot-slot p { color: var(--muted); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        @media (max-width: 640px) { .screenshot-slot img { width: 140px; height: 248px; } }
     </style>
 </head>
 <body>
@@ -262,7 +307,14 @@
 <!-- NAV -->
 <nav>
     <div class="nav-logo">Dhoom<span>Nacho</span></div>
-    <a href="mailto:dev.prasanna.kadam@gmail.com">Contact</a>
+    <div style="display:flex; gap:24px; align-items:center;">
+        <a href="#how-it-works">How It Works</a>
+        <a href="https://play.google.com/store/apps/details?id=com.dhoomnacho.app"
+           target="_blank" rel="noopener"
+           style="background:var(--primary);color:#fff;padding:8px 18px;border-radius:8px;font-weight:700;font-size:0.85rem;">
+            Download ↗
+        </a>
+    </div>
 </nav>
 
 <!-- HERO -->
@@ -274,8 +326,38 @@
         Your social media time is a reward — not a default.
     </p>
     <div class="cta-group">
-        <a href="#how-it-works" class="btn-primary">See How It Works</a>
+        <a href="https://play.google.com/store/apps/details?id=com.dhoomnacho.app"
+           class="btn-play" target="_blank" rel="noopener">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                 alt="Get it on Google Play" />
+        </a>
         <a href="#features" class="btn-outline">View Features</a>
+    </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section style="background: var(--bg); padding: 20px 20px 70px;">
+    <div class="container">
+        <div class="section-label" style="text-align:center; margin-bottom:8px;">Preview</div>
+        <h2 class="section-title" style="text-align:center; margin-bottom:40px;">See it in action</h2>
+        <div class="screenshots-row">
+            <!-- Drop screenshots into docs-website/images/ —
+                 screenshot-1.png : Home dashboard
+                 screenshot-2.png : Dance break overlay
+                 screenshot-3.png : Access granted screen -->
+            <div class="screenshot-slot">
+                <img src="images/screenshot-1.png" alt="Home dashboard — blocked apps and usage timer" />
+                <p>Home Dashboard</p>
+            </div>
+            <div class="screenshot-slot">
+                <img src="images/screenshot-2.png" alt="Dance break overlay — video playing" />
+                <p>Dance Break</p>
+            </div>
+            <div class="screenshot-slot">
+                <img src="images/screenshot-3.png" alt="Access granted — dance complete" />
+                <p>Access Earned</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -343,27 +425,6 @@
                     <h3>You earn your access</h3>
                     <p>Timer completes → access is granted for your daily allowance. Every session logs a completed "bounty" so you can track your movement over time.</p>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- TWO MODES -->
-<section style="background: var(--bg);">
-    <div class="container">
-        <div class="section-label">Two Modes</div>
-        <h2 class="section-title">Match Your Discipline Level</h2>
-        <p class="section-desc">Choose once during setup. Switch anytime from Settings.</p>
-        <div class="two-col">
-            <div class="card" style="border-color: rgba(245,166,35,0.3);">
-                <div class="card-icon">👬</div>
-                <h3>Buddy Mode — Soft Nudge</h3>
-                <p>A 15-second friction countdown appears before your social media loads. You can choose to dismiss it or complete the dance. Ideal for conscious users building mindful habits gradually.</p>
-            </div>
-            <div class="card" style="border-color: rgba(233,69,96,0.3);">
-                <div class="card-icon">🧑‍💼</div>
-                <h3>Coach Mode — Hard Lock</h3>
-                <p>There is no dismissal. The dance break must be completed before the locked app opens. A system-level overlay prevents any bypass. For users who are serious about breaking the habit.</p>
             </div>
         </div>
     </div>
@@ -507,9 +568,12 @@
 <div class="highlight-band">
     <div class="container">
         <h2>Ready to earn your scroll time?</h2>
-        <p>Dhoom Nacho is coming soon to the Google Play Store. Join the early access list and be the first to rewire your habit loop.</p>
-        <a href="mailto:dev.prasanna.kadam@gmail.com" class="btn-outline" style="display:inline-block; border-color: rgba(255,255,255,0.5); color: #fff;">
-            Get Early Access →
+        <p>DhoomNacho is free on Google Play. Download now and start dancing.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.dhoomnacho.app"
+           class="btn-play" target="_blank" rel="noopener" style="display:inline-block;">
+            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                 alt="Get it on Google Play"
+                 style="filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));" />
         </a>
     </div>
 </div>
