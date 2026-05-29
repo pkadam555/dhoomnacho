@@ -286,14 +286,14 @@
         /* SCREENSHOTS */
         .screenshots-row {
             display: flex;
-            gap: 28px;
+            gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
         }
         .screenshot-slot { text-align: center; }
         .screenshot-slot img {
-            width: 200px;
-            height: 355px;
+            width: 180px;
+            height: 320px;
             border-radius: 20px;
             border: 2px solid rgba(255,255,255,0.1);
             box-shadow: 0 16px 48px rgba(0,0,0,0.45);
@@ -303,7 +303,7 @@
             background: var(--surface);
         }
         .screenshot-slot p { color: var(--muted); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        @media (max-width: 640px) { .screenshot-slot img { width: 140px; height: 248px; } }
+        @media (max-width: 640px) { .screenshot-slot img { width: 130px; height: 231px; } }
     </style>
 </head>
 <body>
@@ -346,16 +346,20 @@
         <h2 class="section-title" style="text-align:center; margin-bottom:40px;">See it in action</h2>
         <div class="screenshots-row">
             <div class="screenshot-slot">
-                <img src="images/screenshot-1.png" alt="Onboarding — Dance Your Way to Screen Time" />
+                <img src="images/ss_login.png" alt="Sign In — Continue with Google or email" />
+                <p>Sign In</p>
+            </div>
+            <div class="screenshot-slot">
+                <img src="images/ss_onboarding.png" alt="Onboarding — Dance Your Way to Screen Time" />
                 <p>Get Started</p>
             </div>
             <div class="screenshot-slot">
-                <img src="images/screenshot-2.png" alt="Home Dashboard — Buddy Mode, Free Time, Start Dance Break" />
-                <p>Home Dashboard</p>
+                <img src="images/ss_appselection.png" alt="Pick Your Kryptonite — select apps that trigger a dance break" />
+                <p>Pick Your Apps</p>
             </div>
             <div class="screenshot-slot">
-                <img src="images/screenshot-3.png" alt="Settings — Enforcement Mode, Daily Usage Allowance, Dance Break Duration" />
-                <p>Your Rules</p>
+                <img src="images/ss_home.png" alt="Home Dashboard — Today's Activity, Start Dance Break, quick settings" />
+                <p>Dashboard</p>
             </div>
         </div>
     </div>
@@ -415,7 +419,7 @@
                 <div class="step-connector"></div>
                 <div class="step-body">
                     <h3>You complete your dance break</h3>
-                    <p>A curated YouTube Shorts dance video plays for your chosen duration (1 – 5 min). You can't skip it — the player is locked.</p>
+                    <p>A curated YouTube Shorts dance video plays for your chosen duration. You can't skip it — the player is locked until the timer ends.</p>
                 </div>
             </div>
             <div class="step">
@@ -423,7 +427,7 @@
                 <div class="step-connector"></div>
                 <div class="step-body">
                     <h3>You earn your access</h3>
-                    <p>Timer completes → access is granted for your daily allowance. Every session logs a completed "bounty" so you can track your movement over time.</p>
+                    <p>Timer completes → access is granted for your daily allowance. Your home dashboard updates with dances completed, time danced, and minutes restricted — so progress is always visible.</p>
                 </div>
             </div>
         </div>
@@ -448,9 +452,9 @@
                 <p>JS-level touch interception prevents vertical swipe navigation. The video runs; there is no escape until the timer completes.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>Dynamic App Selection</h3>
-                <p>The app reads your actual installed apps via Android accessibility APIs. Only add apps you genuinely want to friction-ise — no pre-set lists.</p>
+                <div class="feature-icon">🎯</div>
+                <h3>Pick Your Kryptonite</h3>
+                <p>Search and select the exact apps that steal your focus. Dance break triggers only when you open these — your list, your rules.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⏱️</div>
@@ -458,9 +462,14 @@
                 <p>Set how many minutes per day of social media time you budget. The intervention triggers only after the allowance is exhausted.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🚨</div>
-                <h3>Emergency Bypass</h3>
-                <p>Tap a hidden corner 10 times for a 2-minute emergency unlock. Every bypass is logged locally so you can hold yourself accountable.</p>
+                <div class="feature-icon">📊</div>
+                <h3>Today's Activity Dashboard</h3>
+                <p>See your Dances completed, total time danced, and minutes restricted — all in a live dashboard on the home screen. Progress you can see.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Google Sign-In</h3>
+                <p>Sign in with Google or email to sync your settings. Your streak and stats follow you across reinstalls so you never lose your progress.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📶</div>
@@ -471,11 +480,6 @@
                 <div class="feature-icon">🕛</div>
                 <h3>Midnight Reset</h3>
                 <p>Usage allowance resets automatically at midnight local time. Each day is a fresh start with no manual intervention required.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Lightweight Analytics</h3>
-                <p>Tracks bounties completed, interventions triggered, and session durations — to show you your progress over time without surveillance.</p>
             </div>
         </div>
     </div>
@@ -526,6 +530,11 @@
                         <td>Privacy First</td>
                         <td class="cross">✗ Varies</td>
                         <td class="check">✓ Hashed identifiers, no private content read</td>
+                    </tr>
+                    <tr>
+                        <td>Account & Sync</td>
+                        <td class="cross">✗ None</td>
+                        <td class="check">✓ Google Sign-In, stats sync across reinstalls</td>
                     </tr>
                 </tbody>
             </table>
