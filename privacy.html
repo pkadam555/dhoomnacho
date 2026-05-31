@@ -14,6 +14,9 @@
         h2 { margin-top:28px; }
         p { color:#222; line-height:1.55; }
         ul { margin-left:20px; }
+        table { border-collapse:collapse; width:100%; margin:16px 0; }
+        th, td { border:1px solid #ddd; padding:10px 12px; text-align:left; font-size:0.95rem; }
+        th { background:#f5f5f5; }
         a { color:#E94560; text-decoration:none; }
         footer { margin-top:40px; color:#666; font-size:0.9rem; }
     </style>
@@ -21,56 +24,89 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p>Last updated: March 11, 2026</p>
+        <p>Last updated: 31 May 2026</p>
 
-        <p>Dhoom Nacho (“we”, “our”, or “the App”) is committed to protecting your privacy. This Privacy Policy explains what information we collect, how we use it, and the choices you have. This policy applies to our mobile app and the docs website.</p>
+        <h2>1. Who We Are</h2>
+        <p>Dhoom Nacho (marketed globally as Doom Dance) is a digital wellbeing app operated by:<br>
+        <strong>Prasanna Kadam</strong> (Individual Developer)<br>
+        Email: <a href="mailto:dev.prasanna.kadam@gmail.com">dev.prasanna.kadam@gmail.com</a></p>
 
-        <h2>Data We Collect</h2>
-        <p>We limit data collection to the minimum required to provide the app’s features:</p>
+        <h2>2. What Data We Collect</h2>
+        <h3>Account &amp; Identity Data</h3>
+        <p>When you sign in, we collect:</p>
         <ul>
-            <li><strong>Device identifiers:</strong> A salted SHA‑256 hash of a device identifier for lightweight analytics. The raw identifier is never uploaded.</li>
-            <li><strong>Usage events:</strong> Non-personal events such as a completed dance session, app launches intercepted, session durations, and emergency bypass counts. These are tied to the hashed identifier only.</li>
-            <li><strong>Email (optional):</strong> If you sign up for early access or email lists, we store your email to contact you. You can request deletion at any time (see Contact below).</li>
+            <li>Your <strong>email address</strong> (via Clerk, our authentication provider)</li>
+            <li>Your <strong>first and last name</strong> (if provided during sign-in)</li>
         </ul>
 
-        <h2>What We Do Not Collect</h2>
+        <h3>Analytics Data</h3>
+        <p>We use PostHog to understand how the app is used. We collect:</p>
         <ul>
-            <li>We do not read or upload the contents of your messages, photos, contacts, or other personal files.</li>
-            <li>We do not collect precise location, microphone recordings, camera images, or keystrokes.</li>
-            <li>We do not sell personal data to third parties.</li>
+            <li>Your <strong>name</strong> (to identify active users in our internal dashboard)</li>
+            <li>App usage events (e.g. overlays shown, dance completions, onboarding steps)</li>
+            <li>App version and platform (Android/iOS)</li>
+            <li>A stable device identifier (randomly generated, not linked to hardware)</li>
         </ul>
+        <p>We do <strong>not</strong> collect precise location, contacts, photos, or financial information.</p>
 
-        <h2>Why We Request Accessibility Permission</h2>
-        <p>The Android Accessibility permission is used only to detect which app is currently in the foreground so the app can intercept configured social apps and show the Dance Break overlay. We only read package names — we do not capture the content shown inside those apps.</p>
+        <h3>Accessibility Permission</h3>
+        <p>The Android Accessibility permission is used <strong>only</strong> to detect which app is in the foreground so we can show the dance break overlay. We only read package names — we do not capture content shown inside other apps.</p>
 
-        <h2>Children's Privacy (COPPA)</h2>
-        <p>Dhoom Nacho is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13 without verified parental consent, we will delete that information promptly. If you believe we may have any such data, contact us (see below) and we will remove it.</p>
+        <h3>Advertising Data</h3>
+        <p>We use Google AdMob to display ads. AdMob may collect advertising ID and approximate location (country/region). See <a href="https://policies.google.com/privacy" target="_blank">Google's privacy policy</a> for details.</p>
 
-        <h2>How We Use Data</h2>
-        <p>We use collected information to:</p>
+        <h2>3. Legal Basis for Processing (GDPR)</h2>
+        <p>You provide <strong>consent</strong> by checking the agreement checkbox at sign-up. All data processing listed below is based on that consent (Art. 6(1)(a) GDPR). You may withdraw consent at any time by contacting us or deleting your account.</p>
+        <table>
+            <tr><th>Data</th><th>Purpose</th><th>Legal Basis</th></tr>
+            <tr><td>Email address</td><td>Authentication via Clerk</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
+            <tr><td>Name</td><td>Internal analytics — identifying active users</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
+            <tr><td>Usage events</td><td>Improving the app, debugging, feature adoption</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
+            <tr><td>Ad data</td><td>Displaying relevant ads</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
+        </table>
+
+        <h2>4. Third-Party Data Processors</h2>
+        <table>
+            <tr><th>Processor</th><th>Purpose</th><th>Location</th><th>Privacy Policy</th></tr>
+            <tr><td><strong>Clerk</strong></td><td>Authentication &amp; account management</td><td>United States (SOC 2, SCCs)</td><td><a href="https://clerk.com/privacy" target="_blank">clerk.com/privacy</a></td></tr>
+            <tr><td><strong>PostHog</strong></td><td>Product analytics</td><td>EU Cloud (eu.posthog.com)</td><td><a href="https://posthog.com/privacy" target="_blank">posthog.com/privacy</a></td></tr>
+            <tr><td><strong>Google AdMob</strong></td><td>In-app advertising</td><td>United States</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td></tr>
+        </table>
+        <p>We do not sell your personal data to any third party.</p>
+
+        <h2>5. Data Retention</h2>
+        <table>
+            <tr><th>Data</th><th>Retention</th></tr>
+            <tr><td>Account data (Clerk)</td><td>Until account deletion</td></tr>
+            <tr><td>Analytics data (PostHog)</td><td>12 months from last event</td></tr>
+            <tr><td>Ad data (AdMob)</td><td>Per Google's retention policy</td></tr>
+        </table>
+
+        <h2>6. Your Rights</h2>
+        <p>Under GDPR (EU/EEA) and similar laws, you have the right to:</p>
         <ul>
-            <li>Provide and improve the core experience (unlock rules, session tracking).</li>
-            <li>Generate anonymous analytics to understand engagement and reliability.</li>
-            <li>Send optional email updates to users who sign up for early access.</li>
+            <li><strong>Access</strong> — request a copy of your personal data</li>
+            <li><strong>Correction</strong> — ask us to fix inaccurate data</li>
+            <li><strong>Deletion</strong> — ask us to delete your data ("right to be forgotten")</li>
+            <li><strong>Restriction</strong> — ask us to stop processing your data</li>
+            <li><strong>Objection</strong> — object to any processing</li>
+            <li><strong>Portability</strong> — receive your data in a machine-readable format</li>
         </ul>
+        <p>Email <a href="mailto:dev.prasanna.kadam@gmail.com">dev.prasanna.kadam@gmail.com</a> to exercise any right. We will respond within 30 days. For analytics data, we can delete your PostHog person profile on request.</p>
+        <p>If you are in the EU and believe we have not handled your data correctly, you may lodge a complaint with your local data protection authority.</p>
 
-        <h2>Data Security</h2>
-        <p>We implement reasonable technical and organisational measures to protect the data we hold, such as hashing identifiers before transmission and minimising stored fields. However, no method of transmission or storage is 100% secure.</p>
+        <h2>7. Children</h2>
+        <p>This app is not directed at children under 13. We do not knowingly collect data from children. Contact us if you believe a child has provided personal data and we will delete it promptly.</p>
 
-        <h2>Data Deletion & Access</h2>
-        <p>You may request access to, correction of, or deletion of any personal information we hold about you. To make a request, email us at <a href="mailto:dev.prasanna.kadam@gmail.com">dev.prasanna.kadam@gmail.com</a>. We will respond within a reasonable timeframe and delete or anonymise data upon verified request.</p>
+        <h2>8. Changes to This Policy</h2>
+        <p>We may update this policy. Material changes will be notified via an in-app notice. The "Last updated" date at the top will always reflect the current version.</p>
 
-        <h2>Third Parties</h2>
-        <p>We may use third-party services for analytics and crash reporting. These services receive only anonymised or hashed data necessary for their function. We do not share personal content with advertisers.</p>
-
-        <h2>Changes to This Policy</h2>
-        <p>We may update this policy from time to time. If we make material changes, we will post the updated policy here with a revised "Last updated" date.</p>
-
-        <h2>Contact</h2>
-        <p>For privacy questions, data requests, or concerns, contact us at <a href="mailto:dev.prasanna.kadam@gmail.com">dev.prasanna.kadam@gmail.com</a>.</p>
+        <h2>9. Contact</h2>
+        <p><strong>Prasanna Kadam</strong><br>
+        <a href="mailto:dev.prasanna.kadam@gmail.com">dev.prasanna.kadam@gmail.com</a></p>
 
         <footer>
-            <p>&copy; 2026 Dhoom Nacho · Package: <code>com.dhoomnacho.app</code> · <a href="index.html">Home</a></p>
+            <p>&copy; 2026 Dhoom Nacho · <a href="index.html">Home</a> · <a href="terms.html">Terms of Service</a></p>
         </footer>
     </div>
 </body>
